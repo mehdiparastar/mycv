@@ -1,4 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+// import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common/decorators/core/injectable.decorator';
+import { NotFoundException } from '@nestjs/common/exceptions/not-found.exception';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
