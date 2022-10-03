@@ -1,11 +1,33 @@
-### Create a new user
+### Set a color
+GET http://localhost:3000/auth/colors/green
+
+### Get a color
+GET http://localhost:3000/auth/colors
+
+### Get the currently signed in user
+GET http://localhost:3000/auth/whoami
+
+### Signup a new user
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email":"test@test.com",
+    "email":"test2@test.com",
     "password":"test"
 }
+
+### Signin as an existing user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email":"test2@test.com",
+    "password":"test"
+}
+
+### Sign out an existing user
+POST http://localhost:3000/auth/signout
+Content-Type: application/json
 
 ### Find a particular user with a given ID
 GET http://localhost:3000/auth/3
