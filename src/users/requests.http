@@ -1,5 +1,5 @@
 ### Set a color
-GET http://localhost:3000/auth/colors/green
+GET http://localhost:3000/auth/colors/blue
 
 ### Get a color
 GET http://localhost:3000/auth/colors
@@ -12,7 +12,7 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email":"test2@test.com",
+    "email":"test3@test.com",
     "password":"test"
 }
 

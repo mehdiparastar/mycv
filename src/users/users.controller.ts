@@ -1,4 +1,5 @@
 import { Controller } from '@nestjs/common/decorators/core/controller.decorator';
+import { UseGuards } from '@nestjs/common/decorators/core/use-guards.decorator';
 import {
   Delete,
   Get,
@@ -12,12 +13,14 @@ import {
   Session,
 } from '@nestjs/common/decorators/http/route-params.decorator';
 import { NotFoundException } from '@nestjs/common/exceptions';
+import { AuthGuard } from 'src/guards/auth.gard';
 import { Serialize } from 'src/interceptors/serislize.interceptor';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserDto } from './dtos/user.dto';
+import { User } from './user.entity';
 import { UsersService } from './users.service';
 
 @Controller('auth')
@@ -44,7 +47,8 @@ export class UsersController {
   // }
 
   @Get('/whoami')
-  whoAmI(@CurrentUser() user: string) {
+  @UseGuards(AuthGuard)
+  whoAmI(@CurrentUser() user: User) {
     return user;
   }
 
