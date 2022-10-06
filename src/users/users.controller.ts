@@ -13,8 +13,8 @@ import {
   Session,
 } from '@nestjs/common/decorators/http/route-params.decorator';
 import { NotFoundException } from '@nestjs/common/exceptions';
-import { AuthGuard } from 'src/guards/auth.gard';
-import { Serialize } from 'src/interceptors/serislize.interceptor';
+import { AuthGuard } from '../guards/auth.gard';
+import { Serialize } from '../interceptors/serislize.interceptor';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { CreateUserDto } from './dtos/create-user.dto';
