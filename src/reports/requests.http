@@ -1,19 +1,15 @@
-### Set a color
-GET http://localhost:3000/auth/colors/blue
-
-### Get a color
-GET http://localhost:3000/auth/colors
-
-### Get the currently signed in user
-GET http://localhost:3000/auth/whoami
-
-### Signup a new user
-POST http://localhost:3000/auth/signup
+### Create a new report
+POST http://localhost:3000/reports/create
 Content-Type: application/json
 
 {
-    "email":"test@test.com",
-    "password":"test"
+    "make":"toyota",
+    "model":"corolla",
+    "year":1980,
+    "mileage":100000,
+    "lng":0,
+    "lat":0,
+    "price":500000
 }
 
 ### Signin as an existing user
@@ -21,7 +17,7 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email":"test@test.com",
+    "email":"test2@test.com",
     "password":"test"
 }
 
