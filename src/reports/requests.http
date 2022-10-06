@@ -2,7 +2,7 @@
 POST http://localhost:3000/reports/create
 Content-Type: application/json
 
-{
+{ 
     "make":"toyota",
     "model":"corolla",
     "year":1980,
@@ -12,33 +12,10 @@ Content-Type: application/json
     "price":500000
 }
 
-### Signin as an existing user
-POST http://localhost:3000/auth/signin
+### Approve an existing report
+PATCH http://localhost:3000/reports/5
 Content-Type: application/json
 
 {
-    "email":"test2@test.com",
-    "password":"test"
-}
-
-### Sign out an existing user
-POST http://localhost:3000/auth/signout
-Content-Type: application/json
-
-### Find a particular user with a given ID
-GET http://localhost:3000/auth/3
-
-
-### Find a particular user with a given email
-GET http://localhost:3000/auth?email=test@test.com
-
-### Delete a particular user with a given id 
-DELETE  http://localhost:3000/auth/3
-
-### Update a user
-PATCH http://localhost:3000/auth/4
-Content-Type: application/json
-
-{
-    "email":"aaa@aaa.com"
+    "approved":true
 }
