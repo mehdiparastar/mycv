@@ -1,7 +1,9 @@
-import { Injectable } from '@nestjs/common/decorators/core/injectable.decorator';
-import { InjectRepository } from '@nestjs/typeorm/dist/common/typeorm.decorators';
+
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 import { User } from '../users/user.entity';
-import { Repository } from 'typeorm/repository/Repository';
 import { CreateReportDto } from './dtos/create-report.dto';
 import { Report } from './report.entity';
 import { NotFoundException } from '@nestjs/common/exceptions/not-found.exception';

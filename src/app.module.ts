@@ -19,11 +19,12 @@ const cookieSession = require('cookie-session');
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
+      name: 'default',
       useFactory: async (config: ConfigService) => {
         const db_name = config.get<string>('DB_NAME');
         return {
           type: 'sqlite',
-          database: config.get<string>('DB_NAME'),
+          database: db_name,
           synchronize: true,
           entities: [User, Report],
         };
