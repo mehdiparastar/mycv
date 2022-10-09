@@ -1,0 +1,7 @@
+
+{
+  "synchronize": false,
+  "type": "sqlite",
+  "database": "devDB.sqlite",
+  "entities": ["**/*.entity.js"]
+}
