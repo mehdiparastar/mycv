@@ -11,6 +11,7 @@ import { APP_PIPE } from '@nestjs/core/constants';
 import { MiddlewareConsumer } from '@nestjs/common/interfaces/middleware/middleware-consumer.interface';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm/data-source/DataSource';
+import { AppDataSource } from './data-source';
 const cookieSession = require('cookie-session');
 @Module({
   imports: [
@@ -26,12 +27,12 @@ const cookieSession = require('cookie-session');
     //       type: 'sqlite',
     //       database: db_name,
     //       synchronize: true,
-    //       entities: [User, Report],
+    //       entities: [User, Report],          
     //     };
     //   },
     //   inject: [ConfigService],
     // }),
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(AppDataSource.options),
     UsersModule,
     ReportsModule,
   ],
