@@ -82,8 +82,17 @@
     "testEnvironment": "node"
   },
   "comments": {
-    "migration_comment":"For initial migration make sure that the `devDB.sqlite` file and `dist` folder don't exist then run the command `npm run migration:generate -name=MigrationName` and after that run: `npm run migration:run` and at the end start the application.",
-    "migration_reffer_link1":"https://qiita.com/t-yama-3/items/fa2113fcabf84e0a20e6",
-    "migration_reffer_link2":"https://qiita.com/Aurum64/items/f5962bd2a643447dbef9"
+    "initial_migration": {
+      "step1": "make sure that the `devDB.sqlite` file and `dist` folder don`t exist.",
+      "step2": "run the command `npm run migration:generate -name=MigrationName`.",
+      "step3": "start the application with the `npm run start:dev`.",
+      "step4": "run the command `npm run migration:run`."
+    },
+    "next_migrations": {
+      "step1": "run the command `npm run migration:generate -name=MigrationName`.",
+      "step2": "run the command `npm run migration:run`."
+    },
+    "migration_reffer_link1": "https://qiita.com/t-yama-3/items/fa2113fcabf84e0a20e6",
+    "migration_reffer_link2": "https://qiita.com/Aurum64/items/f5962bd2a643447dbef9"
   }
 }
