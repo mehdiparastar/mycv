@@ -12,7 +12,7 @@
     "start": "cross-env NODE_ENV=development nest start",
     "start:dev": "cross-env NODE_ENV=development nest start --watch",
     "start:debug": "cross-env NODE_ENV=development nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "cross-env NODE_ENV=production node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch --maxWorkers=1",
@@ -21,8 +21,10 @@
     "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json --maxWorkers=1",
     "typeorm": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs",
     "migration:create": "cross-env NODE_ENV=development npx typeorm migration:create src/migration/${npm_config_name}",
-    "migration:generate": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs migration:generate src/migration/${npm_config_name} -d src/data-source.ts",
-    "migration:run": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts"
+    "migration:dev:generate": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs migration:generate src/migration/${npm_config_name} -d src/data-source.ts -o",
+    "migration:dev:run": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
+    "migration:prod:generate": "cross-env NODE_ENV=production npx typeorm-ts-node-commonjs migration:generate src/migration/${npm_config_name} -d src/data-source.ts -o",
+    "migration:prod:run": "cross-env NODE_ENV=production npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.1.4",
@@ -83,17 +85,35 @@
     "testEnvironment": "node"
   },
   "comments": {
-    "initial_migration": {
-      "step1": "make sure that the `devDB.sqlite` file and `dist` folder don`t exist.",
-      "step2": "run the command `npm run migration:generate -name=MigrationName`.",
-      "step3": "start the application with the `npm run start:dev`.",
-      "step4": "run the command `npm run migration:run`."
+    "dev_env": {
+      "initial_migration": {
+        "step1": "make sure that the `devDB.sqlite` file and `migration` folder don`t exist.",
+        "step2": "run the command `npm run migration:dev:generate -name=MigrationName`.",
+        "step3": "run the command `npm run migration:dev:run`.",
+        "step4": "run the command `npm run prebuild`.",
+        "step5": "run the command `npm run build`.",
+        "step6": "start the application with the `npm run start:dev`."
+      },
+      "next_migrations": {
+        "step1": "run the command `npm run migration:dev:generate -name=MigrationName`.",
+        "step2": "run the command `npm run migration:dev:run`."
+      }
     },
-    "next_migrations": {
-      "step1": "run the command `npm run migration:generate -name=MigrationName`.",
-      "step2": "run the command `npm run migration:run`."
+    "prod_env": {
+      "initial_migration": {
+        "step1-1": "make sure that postgres db has been installed and initiated and `migration` folder don`t exist.",
+        "step1-2": "for installing and initating postgres you could run the command: `docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key`",
+        "step2": "run the command `npm run migration:prod:generate -name=MigrationName`.",
+        "step3": "run the command `npm run migration:prod:run`.",
+        "step4": "start the application with the `npm run start:prod`."
+      },
+      "next_migrations": {
+        "step1": "run the command `npm run migration:prod:generate -name=MigrationName`.",
+        "step2": "run the command `npm run migration:prod:run`."
+      }
     },
     "migration_reffer_link1": "https://qiita.com/t-yama-3/items/fa2113fcabf84e0a20e6",
-    "migration_reffer_link2": "https://qiita.com/Aurum64/items/f5962bd2a643447dbef9"
+    "migration_reffer_link2": "https://qiita.com/Aurum64/items/f5962bd2a643447dbef9",
+    "docker_run_postgres": "docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key"
   }
 }

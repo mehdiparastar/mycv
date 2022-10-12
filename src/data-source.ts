@@ -8,24 +8,29 @@ const dbConfig = {
     database: 'devDB.sqlite',
     entities: [User, Report],
     synchronize: false,
-    migrations: ['dist/migration/*.js'],
+    migrations: ['src/migration/*.js'],
   } as DataSourceOptions,
   test: {
     type: 'sqlite',
     database: 'testDB.sqlite',
     entities: [User, Report],
     synchronize: false,
-    migrations: ['dist/migration/*.js'],
+    migrations: ['src/migration/*.js'],
     migrationsRun: true,
   } as DataSourceOptions,
   production: {
     type: 'postgres',
-    url: process.env.DATABASE_URL,
+    // url: process.env.DATABASE_URL,
+    host: 'localhost',
+    port: 5432,
+    migrations: ['src/migration/*.js'],
     migrationsRun: true,
     entities: [User, Report],
     ssl: {
       rejectUnauthorized: false,
     },
+    username: 'root',
+    password: 'mehdi',
   } as DataSourceOptions,
 };
 
