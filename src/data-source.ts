@@ -61,7 +61,11 @@ const dbConfig = {
     //         In my case, it gets like this: "heroku config:set COOKIE_KEY=mehdip@r@st@r_prod --app limitless-escarpment-78168"
     // step15) Type `heroku config:set NODE_ENV=production --app {enter project name}`
     //         In my case, it gets like this: "heroku config:set NODE_ENV=production --app limitless-escarpment-78168" 
-    // step16) Type `git push heroku master` to deploy and run our application. :)
+    // step16) Type `git add .`
+    // step16) Type `git commit -m "pre production commit (updated)"`
+    // step16) Type `heroku git:remote --app {enter project name}`. 
+    //         In my case, it gets like this: "heroku git:remote --app limitless-escarpment-78168"
+    // step17) Type `git push heroku master` to deploy and run our application. :)
 
     type: 'postgres',
     migrations: ['src/migration_prod/*.js'],
