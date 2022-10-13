@@ -46,25 +46,25 @@ const dbConfig = {
     // step02) Open Terminal(CMD in windows) in the same root directory of the project.
     // step03) Type `heroku login` to log in.
     // step04) Type `heroku auth:whoami` to ensure that you have logged in correctly; it should return your email address.
-    // step05) Type `heroku create` to create a new project on heroku, and it should return something like this=> "Creating app... done, ⬢ limitless-escarpment-78168"
-    // step06) Save the name of the created project in the previous step. In my case, it is "limitless-escarpment-78168".
+    // step05) Type `heroku create` or `heroku create {your app name}` to create a new project on heroku, and it should return something like this=> "Creating app... done, ⬢ my-cv-heroku"
+    // step06) Save the name of the created project in the previous step. In my case, it is "my-cv-heroku".
     // step07) Type `heroku addons:create heroku-postgresql:hobby-dev --app {enter project name}` to add postgresDB addon to created project on Heroku.
-    //         In my case, it is `heroku addons:create heroku-postgresql:hobby-dev --app limitless-escarpment-78168`.
+    //         In my case, it is `heroku addons:create heroku-postgresql:hobby-dev --app my-cv-heroku`.
     // step08) Type `heroku pg:credentials:url --app {enter project name}` to see created DB credentials.
-    //         In my case, it is `heroku pg:credentials:url --app limitless-escarpment-78168`
+    //         In my case, it is `heroku pg:credentials:url --app my-cv-heroku`
     // step09) Save the value of the Connection URL in step08 as "url" in the config below.
     // step10) run the command `npm run migration:prod:generate -name=MigrationName`.
     // step11) run the command `npm run migration:prod:run`.
     // step12) If you type the command `heroku pg:info --app {enter project name}`, you should see the number of the tables has been equal to 3.
     // step13) Copy the value of the "COOKIE_KEY" property in the ".production.env" file.
     // step14) Type `heroku config:set COOKIE_KEY={Paste the value that is copied in step 13} --app {enter project name}`
-    //         In my case, it gets like this: "heroku config:set COOKIE_KEY=mehdip@r@st@r_prod --app limitless-escarpment-78168"
+    //         In my case, it gets like this: "heroku config:set COOKIE_KEY=mehdip@r@st@r_prod --app my-cv-heroku"
     // step15) Type `heroku config:set NODE_ENV=production --app {enter project name}`
-    //         In my case, it gets like this: "heroku config:set NODE_ENV=production --app limitless-escarpment-78168" 
+    //         In my case, it gets like this: "heroku config:set NODE_ENV=production --app my-cv-heroku" 
     // step16) Type `git add .`
-    // step17) Type `git commit -m "pre production commit (updated)"`
+    // step17) Type `git commit -m "pre production commit (updated)"` and then type `git push`
     // step18) Type `heroku git:remote --app {enter project name}`. 
-    //         In my case, it gets like this: "heroku git:remote --app limitless-escarpment-78168"
+    //         In my case, it gets like this: "heroku git:remote --app my-cv-heroku"
     // step19) Type `git push heroku master` to deploy and run our application. :)
 
     type: 'postgres',
@@ -75,7 +75,7 @@ const dbConfig = {
       rejectUnauthorized: false,
     },
     // Put the saved value in step 09 as the "url" property value.
-    url: 'postgres://ywyocafakvtrzq:067e3e775324d4cdce552ab84a0b4765e7e3d22c38117c82058be682146ea213@ec2-44-206-214-233.compute-1.amazonaws.com:5432/d9dr6j368r1fjg',
+    url: 'postgres://njndqjdzjqidrn:edb189bb12111dc212cf0c88802b23bcba01eb272fae042b340b0f7e1a28e0d4@ec2-54-160-200-167.compute-1.amazonaws.com:5432/dbs6cleepjkkem',
     //#endregion
   } as DataSourceOptions,
 };
