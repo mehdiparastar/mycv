@@ -129,6 +129,8 @@
     "docker_postgres": "docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key",
     "heroku_cli_setup_instruction_link1": "https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up",
     "heroku_cli_setup_instruction_link2": "https://devcenter.heroku.com/articles/heroku-cli",
-    "heroku_cli_setup_instruction_link3": "https://www.linuxfordevices.com/tutorials/ubuntu/install-heroku-on-ubuntu"
+    "heroku_cli_setup_instruction_link3": "https://www.linuxfordevices.com/tutorials/ubuntu/install-heroku-on-ubuntu",
+    "heroku_deploy_using_git_link":"https://devcenter.heroku.com/articles/git",
+    "heroku_deploy_nestjs_link":"https://blog.tooljet.com/deploying-nest-js-application-on-heroku/"
   }
 }
