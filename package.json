@@ -101,25 +101,34 @@
       }
     },
     "prod_env": {
-      "initial_migration": {
-        "step1-1": "make sure that postgres db has been installed and initiated and `migration_prod` folder don`t exist.",
-        "step1-2": "for installing and initating postgres you could run the command: `docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key`",
-        "step2": "run the command `npm run migration:prod:generate -name=MigrationName`.",
-        "step3": "run the command `npm run migration:prod:run`.",
-        "step4": "run the command `npm run prebuild`.",
-        "step5": "run the command `npm run build`.",
-        "step6": "start the application with the `npm run start:prod`."
+      "DOCKER_PRODUCTION": {
+        "step01": "un-comment sections related to HEROKU PRODUCTION in the dbConfig of data-source.ts file.",
+        "step02": {
+          "initial_migration": {
+            "step1-1": "make sure that postgres db has been installed and initiated and `migration_prod` folder don`t exist.",
+            "step1-2": "for installing and initating postgres you could run the command: `docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key`",
+            "step2": "run the command `npm run migration:prod:generate -name=MigrationName`.",
+            "step3": "run the command `npm run migration:prod:run`.",
+            "step4": "run the command `npm run prebuild`.",
+            "step5": "run the command `npm run build`.",
+            "step6": "start the application with the `npm run start:prod`."
+          },
+          "next_migrations": {
+            "step1": "run the command `npm run migration:prod:generate -name=MigrationName`.",
+            "step2": "run the command `npm run migration:prod:run`."
+          }
+        }
       },
-      "next_migrations": {
-        "step1": "run the command `npm run migration:prod:generate -name=MigrationName`.",
-        "step2": "run the command `npm run migration:prod:run`."
+      "HEROKU_PRODUCTION": {
+        "step01": "un-comment sections related to HEROKU PRODUCTION in the dbConfig of data-source.ts file.",
+        "step02": "follow the instruction in `data-source.ts` file."
       }
     },
     "migration_reffer_link1": "https://qiita.com/t-yama-3/items/fa2113fcabf84e0a20e6",
     "migration_reffer_link2": "https://qiita.com/Aurum64/items/f5962bd2a643447dbef9",
     "docker_postgres": "docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key",
-    "heroku_cli_setup_instruction_link1":"https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up",
-    "heroku_cli_setup_instruction_link2":"https://devcenter.heroku.com/articles/heroku-cli",
-    "heroku_cli_setup_instruction_link3":"https://www.linuxfordevices.com/tutorials/ubuntu/install-heroku-on-ubuntu"
+    "heroku_cli_setup_instruction_link1": "https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up",
+    "heroku_cli_setup_instruction_link2": "https://devcenter.heroku.com/articles/heroku-cli",
+    "heroku_cli_setup_instruction_link3": "https://www.linuxfordevices.com/tutorials/ubuntu/install-heroku-on-ubuntu"
   }
 }
