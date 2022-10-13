@@ -30,7 +30,7 @@ POST http://localhost:3000/auth/signout
 Content-Type: application/json
 
 ### Find a particular user with a given ID
-GET http://localhost:3000/auth/3
+GET http://localhost:3000/auth/1
 
 
 ### Find a particular user with a given email

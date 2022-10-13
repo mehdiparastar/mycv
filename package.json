@@ -20,10 +20,11 @@
     "test:debug": "cross-env NODE_ENV=test node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json --maxWorkers=1",
     "typeorm": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs",
-    "migration:create": "cross-env NODE_ENV=development npx typeorm migration:create src/migration/${npm_config_name}",
-    "migration:dev:generate": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs migration:generate src/migration/${npm_config_name} -d src/data-source.ts -o",
+    "migration:dev:create": "cross-env NODE_ENV=development npx typeorm migration:create src/migration_dev/${npm_config_name}",
+    "migration:dev:generate": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs migration:generate src/migration_dev/${npm_config_name} -d src/data-source.ts -o",
     "migration:dev:run": "cross-env NODE_ENV=development npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
-    "migration:prod:generate": "cross-env NODE_ENV=production npx typeorm-ts-node-commonjs migration:generate src/migration/${npm_config_name} -d src/data-source.ts -o",
+    "migration:prod:create": "cross-env NODE_ENV=production npx typeorm migration:create src/migration_prod/${npm_config_name}",
+    "migration:prod:generate": "cross-env NODE_ENV=production npx typeorm-ts-node-commonjs migration:generate src/migration_prod/${npm_config_name} -d src/data-source.ts -o",
     "migration:prod:run": "cross-env NODE_ENV=production npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts"
   },
   "dependencies": {
@@ -87,7 +88,7 @@
   "comments": {
     "dev_env": {
       "initial_migration": {
-        "step1": "make sure that the `devDB.sqlite` file and `migration` folder don`t exist.",
+        "step1": "make sure that the `devDB.sqlite` file and `migration_dev` folder don`t exist.",
         "step2": "run the command `npm run migration:dev:generate -name=MigrationName`.",
         "step3": "run the command `npm run migration:dev:run`.",
         "step4": "run the command `npm run prebuild`.",
@@ -101,11 +102,13 @@
     },
     "prod_env": {
       "initial_migration": {
-        "step1-1": "make sure that postgres db has been installed and initiated and `migration` folder don`t exist.",
+        "step1-1": "make sure that postgres db has been installed and initiated and `migration_prod` folder don`t exist.",
         "step1-2": "for installing and initating postgres you could run the command: `docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key`",
         "step2": "run the command `npm run migration:prod:generate -name=MigrationName`.",
         "step3": "run the command `npm run migration:prod:run`.",
-        "step4": "start the application with the `npm run start:prod`."
+        "step4": "run the command `npm run prebuild`.",
+        "step5": "run the command `npm run build`.",
+        "step6": "start the application with the `npm run start:prod`."
       },
       "next_migrations": {
         "step1": "run the command `npm run migration:prod:generate -name=MigrationName`.",
@@ -114,6 +117,9 @@
     },
     "migration_reffer_link1": "https://qiita.com/t-yama-3/items/fa2113fcabf84e0a20e6",
     "migration_reffer_link2": "https://qiita.com/Aurum64/items/f5962bd2a643447dbef9",
-    "docker_run_postgres": "docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key"
+    "docker_postgres": "docker run --name postgres -d --rm -e POSTGRES_USER=root -e POSTGRES_PASSWORD=mehdi -p 5432:5432 postgres -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key",
+    "heroku_cli_setup_instruction_link1":"https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up",
+    "heroku_cli_setup_instruction_link2":"https://devcenter.heroku.com/articles/heroku-cli",
+    "heroku_cli_setup_instruction_link3":"https://www.linuxfordevices.com/tutorials/ubuntu/install-heroku-on-ubuntu"
   }
 }
